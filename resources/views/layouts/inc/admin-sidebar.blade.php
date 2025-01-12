@@ -20,7 +20,7 @@
                     </a>
                 @endif
 
-                <div class="sb-sidenav-menu-heading">Interface</div>
+                <div class="sb-sidenav-menu-heading">Interfaces</div>
                 <a class="nav-link {{ Request::is('admin/category') || Request::is('admin/add-category') || Request::is('admin/edit-category/*') ? 'collapse active' : 'collapsed' }}"
                     href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false"
                     aria-controls="collapseCategory">
