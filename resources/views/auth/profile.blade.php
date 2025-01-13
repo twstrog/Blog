@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'My Profile')
+@section('title', 'My Information')
 
 @section('content')
     <main style="flex-grow: 1;">
@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>My Profile</h3>
+                            <h3>My Information</h3>
                         </div>
                         <div class="card-body">
                             @if (session('success'))
