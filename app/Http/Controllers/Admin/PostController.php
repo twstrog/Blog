@@ -104,7 +104,7 @@ class PostController extends Controller
         $data = $request->validated();
         $category = Category::find($data['category_id']);
         if (!$category) {
-            return response()->json(['error' => 'Category not found'], 404);
+            return response()->json(['error' => 'Category not found, fck'], 404);
         }
         if (!empty($data['yt_iframe']) && !preg_match('/^https:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})$/', $data['yt_iframe'], $matches)) {
             return redirect()->back()->withInput()->withErrors(['yt_iframe' => 'Invalid YouTube URL']);
@@ -113,7 +113,7 @@ class PostController extends Controller
         }
         $post = Post::find($post_id);
         if (!$post) {
-            return response()->json(['error' => 'Post not found'], 404);
+            return response()->json(['error' => 'Post not found, fck'], 404);
         }
         $slug = Str::slug($data['name']);
         if (Post::where('slug', $slug)->where('id', '!=', $post_id)->exists()) {

@@ -17,14 +17,14 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->mediumText('description');
 
             $table->string('yt_iframe')->nullable();
 
             $table->string('meta_title');
-            $table->mediumText('meta_description')->nullable();
-            $table->mediumText('meta_keyword')->nullable();
+            $table->mediumText('meta_description');
+            $table->mediumText('meta_keyword');
 
             $table->tinyInteger('status')->default('0');
             $table->integer('created_by');

@@ -25,7 +25,7 @@ class PostFormRequest extends FormRequest
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
             'meta_keyword' => 'nullable|string|max:255',
-            'status' => 'nullable|boolean',
+            'status' => 'nullable',
         ];
     }
 
