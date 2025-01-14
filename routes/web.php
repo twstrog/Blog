@@ -4,13 +4,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\CommentController;
+use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Frontend\FrontendController;
 
 Route::get('/', function () {
@@ -30,7 +31,8 @@ Route::middleware(['auth', 'isSuperAdmin'])->group(function () {
     Route::get('admin/users/{user_id}', [UserController::class, 'edit'])->name('admin.edit-user');
     Route::put('admin/update-role/{user_id}', [UserController::class, 'update']);
     Route::get('/delete-user/{user_id}', [UserController::class, 'destroy']);
-    // Route::get('admin/users', [UserController::class, 'lastActive'])->name('active-users');
+
+    Route::get('admin/activity-logs', [ActivityLogController::class, 'index'])->name('activity-logs.index');
 });
 
 // Route Admin Manage

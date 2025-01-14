@@ -21,7 +21,7 @@
                 {{ Auth::user()->name }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ route('admin.profile') }}">{{ __('My Profile') }}</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.profile') }}">{{ __('My Information') }}</a></li>
                 <li><a class="dropdown-item" href="{{ url('/password/change') }}">{{ __('Password Change') }}</a>
                 <li>
                     <hr class="dropdown-divider" />

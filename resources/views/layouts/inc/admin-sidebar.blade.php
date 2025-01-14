@@ -18,6 +18,13 @@
                         </div>
                         User
                     </a>
+                    <a class="nav-link {{ Request::is('admin/activity-logs') ? 'active' : '' }}"
+                        href="{{ route('activity-logs.index') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        Activity Logs
+                    </a>
                 @endif
 
                 <div class="sb-sidenav-menu-heading">Interfaces</div>

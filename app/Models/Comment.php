@@ -6,12 +6,15 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Comment extends Model
+class Comment extends Model implements Auditable
 {
     use HasFactory;
+    use \OwenIt\Auditing\Auditable;
 
     protected $table = 'comments';
+
     protected $fillable = ['post_id', 'user_id', 'comment_body'];
 
     public function post()

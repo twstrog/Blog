@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'My Profile')
+@section('title', 'My Information')
 
 @section('content')
     <div class="container">
@@ -12,7 +12,7 @@
 
                 <div class="card mt-5">
                     <div class="card-header">
-                        <h3>My Profile<a href="{{ route('admin.dashboard') }}" class="btn btn-primary float-end">Back</a>
+                        <h3>My Information<a href="{{ route('admin.dashboard') }}" class="btn btn-primary float-end">Back</a>
                         </h3>
                     </div>
                     <div class="card-body">
