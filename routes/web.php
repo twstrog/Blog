@@ -30,6 +30,7 @@ Route::middleware(['auth', 'isSuperAdmin'])->group(function () {
     Route::get('admin/users/{user_id}', [UserController::class, 'edit'])->name('admin.edit-user');
     Route::put('admin/update-role/{user_id}', [UserController::class, 'update']);
     Route::get('/delete-user/{user_id}', [UserController::class, 'destroy']);
+    // Route::get('admin/users', [UserController::class, 'lastActive'])->name('active-users');
 });
 
 // Route Admin Manage

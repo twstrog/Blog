@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    public function lastActive()
+    {
+        $activeThreshold = now()->subMinutes(5);
+        $activeUsers = User::where('last_active', '>=', $activeThreshold)->get();
+
+        return view('admin.users.index', compact('users'));
+    }
+
     public function index()
     {
         $users = User::all();
