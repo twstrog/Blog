@@ -130,29 +130,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <div class="card mb-3" style="border: 1px solid #007fab">
-                                    <div class="card-header" style="background-color: #d3e0e4">
-                                        <h4>Category Image</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        {{-- <label>* Image</label> --}}
-                                        <input id="imageInput" type="file" name="image" class="form-control"
-                                            autocomplete="off">
-                                        <small id="imageError" style="color: red; display: none;">
-                                            Please upload a valid image file (jpg, jpeg, png, gif).
-                                        </small>
-                                    </div>
-                                    <div class="card-footer">
-                                        @if (!empty($category->image))
-                                            <img src="{{ asset('uploads/category/' . $category->image) }}"
-                                                alt="Category Image" class="img-thumbnail mt-2" style="width: 100%;">
-                                        @else
-                                            <p>No image on this category</p>
-                                        @endif
-                                    </div>
+                            {{-- <div class="mb-3"> --}}
+                            <div class="card mb-3" style="border: 1px solid #007fab">
+                                <div class="card-header" style="background-color: #d3e0e4">
+                                    <h4>Category Image</h4>
+                                </div>
+                                <div class="card-body">
+                                    {{-- <label>* Image</label> --}}
+                                    <input id="imageInput" type="file" name="image" class="form-control"
+                                        autocomplete="off">
+                                    <small id="imageError" style="color: red; display: none;">
+                                        Please upload a valid image file (jpg, jpeg, png, gif).
+                                    </small>
+                                </div>
+                                <div class="card-footer">
+                                    @if (!empty($category->image))
+                                        <img src="{{ asset('uploads/category/' . $category->image) }}" alt="Category Image"
+                                            class="img-thumbnail mt-2" style="width: 100%;">
+                                    @else
+                                        <p>No image on this category</p>
+                                    @endif
                                 </div>
                             </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
 

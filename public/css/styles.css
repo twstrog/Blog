@@ -13186,3 +13186,42 @@ body {
     font-size: 0.75rem;
     border-radius: 0.375rem !important;
 }
+
+/* this is css for dark mode*/
+body.dark-mode * {
+    color: wheat !important;
+}
+
+body.dark-mode .card-header,
+body.dark-mode .card-footer {
+    background-color: #9aa8af !important;
+}
+
+body.dark-mode .card,
+body.dark-mode .card-body {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+body.dark-mode select,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode .card-body,
+body.dark-mode .form-control,
+body.dark-mode .dropdown-menu,
+body.dark-mode #layoutSidenav_content {
+    background-color: #3b4a51 !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: wheat !important;
+    color: #3b4a51 !important;
+}
+
+#theme-toggle {
+    font-size: 19px;
+}
+
+.note-toolbar {
+    background-color: #3b4a51 !important;
+}

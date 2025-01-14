@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <div class="mb-3">
                                         <label for="category">* Category</label>
-                                        <select id="category" name="category_id" class="form-control">
+                                        <select id="category" name="category_id" class="form-control is-invalid">
                                             <option value="">-- Select Category --</option>
                                             @foreach ($category as $cateitem)
                                                 <option value="{{ $cateitem->id }}">{{ $cateitem->name }}</option>
@@ -57,7 +57,7 @@
 
                                     <div class="mb-2">
                                         <label for="ytIframe">Youtube Link</label>
-                                        <input type="text" id="ytIframe" name="yt_iframe" class="form-control"
+                                        <input type="text" id="ytIframe" name="yt_iframe" class="form-control is-valid"
                                             autocomplete="off" placeholder="https://www.youtube.com/watch?v=example">
                                         <div id="ytIframeError" class="invalid-feedback">
                                             Enter a valid YouTube link (e.g., https://www.youtube.com/watch?v=example).
@@ -119,8 +119,10 @@
 
             <div class="card-footer">
                 <div class="col-md-12">
-                    <a href="{{ route('admin.post') }}" class="btn btn-primary float-start">View all post</a>
-                    <button type="submit" class="btn btn-success float-end">Add this post</button>
+                    <a href="{{ route('admin.post') }}" class="btn btn-primary border rounded-3 float-start">All Post</a>
+                    <button type="submit" class="btn btn-success border rounded-3 float-end">
+                        <i class="fa-solid fa-plus"></i> Add This Post
+                    </button>
                 </div>
             </div>
             </form>

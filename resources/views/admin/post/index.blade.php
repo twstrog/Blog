@@ -17,7 +17,10 @@
             @endif
             <div class="card-header">
                 <h4 class="">View Post
-                    <a href="{{ route('admin.add-post') }}" class="btn btn-sm btn-primary float-end">Add Post</a>
+                    <a href="{{ route('admin.add-post') }}" class="btn border rounded-3 float-end">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Post
+                    </a>
                 </h4>
             </div>
             <div class="card-body">
@@ -42,11 +45,15 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
-                                        <a href="{{ url('admin/post/' . $item->id) }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ url('admin/post/' . $item->id) }}" class="btn border rounded-3">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/delete-post/' . $item->id) }}"
-                                            class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('admin/delete-post/' . $item->id) }}" class="btn border rounded-3"
+                                            onclick="return confirm('Are you sure want to delete this post?');">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

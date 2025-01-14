@@ -5,7 +5,7 @@
 @section('content')
     {{-- <div class="container"> --}}
     <div class="container-fluid px-4">
-        <div class="card mt-4">
+        <div class="card mt-4 mb-4">
             <div class="card-header">
                 <h4>Activity Logs</h4>
             </div>

@@ -118,8 +118,10 @@
             </div>
             <div class="card-footer">
                 <div class="col-md-12">
-                    <a href="{{ url('admin/category') }}" class="btn btn-primary float-start">View all category</a>
-                    <button type="submit" class="btn btn-success float-end">Add this category</button>
+                    <a href="{{ url('admin/category') }}" class="btn border rounded-3 btn-primary float-start">All
+                        Category</a>
+                    <button type="submit" class="btn border rounded-3 btn-success float-end">
+                        <i class="fa-solid fa-plus"></i> Add This Category</button>
                 </div>
             </div>
             </form>

@@ -19,7 +19,9 @@
             @endif
             <div class="card-header">
                 <h4 class="">View Category
-                    <a href="{{ url('admin/add-category') }}" class="btn btn-sm btn-primary float-end">Add Category</a>
+                    <a href="{{ url('admin/add-category') }}" class="btn border rounded-3 float-end">
+                        <i class="fa-solid fa-plus"></i> Add Category
+                    </a>
                 </h4>
             </div>
             <div class="card-body">
@@ -48,11 +50,16 @@
                                     <td>{{ $item->status == 1 ? 'Hidden' : 'Shown' }}</td>
                                     <td>
                                         <a href="{{ url('admin/edit-category/' . $item->id) }}"
-                                            class="btn btn-success">Edit</a>
+                                            class="btn border rounded-3">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </a>
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/delete-category/' . $item->id) }}" class="btn btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete this category with it post?');">Delete</a>
+                                        <a href="{{ url('admin/delete-category/' . $item->id) }}"
+                                            class="btn border rounded-3"
+                                            onclick="return confirm('Are you sure want to delete this category with it post?');">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

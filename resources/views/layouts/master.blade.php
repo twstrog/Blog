@@ -31,7 +31,7 @@
     @yield('styles')
 </head>
 
-<body>
+<body class="{{ session('theme', 'light') === 'dark' ? 'dark-mode' : '' }}">
     @include('layouts.inc.admin-navbar')
 
     <div id="layoutSidenav">
@@ -49,6 +49,7 @@
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('js/theme-toggle.js') }}"></script>
 
     {{-- CDN Link Summernote JS --}}
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>

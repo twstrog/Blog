@@ -53,8 +53,9 @@
                                         {{ $item->created_at->timezone('UTC')->setTimezone('Asia/Bangkok')->format('H:i:s - d/m/Y') }}
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/users/' . $item->id) }}" class="btn btn-success">Edit
-                                            Role</a>
+                                        <a href="{{ url('admin/users/' . $item->id) }}" class="btn border rounded-3">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </a>
                                     </td>
                                     {{-- <td>
                                         <a href="{{ url('admin/delete-user/' . $item->id) }}"
