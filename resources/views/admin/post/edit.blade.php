@@ -5,15 +5,49 @@
 
     <div class="container-fluid px-4">
         <div class="card mt-4" style="border: 1px solid #80a8b0">
-            @if (session('status'))
-                <h5 class="alert alert-success mt-3">{{ session('status') }}</h5>
+            @if ($errors->any())
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-danger bg-gradient">
+                            <strong class="me-auto text-dark">Notification</strong>
+                            <small>{{ now()->diffForHumans() }}</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <script>
+                                setTimeout(function() {
+                                    var toastElement = document.getElementById('liveToast');
+                                    var toast = new bootstrap.Toast(toastElement);
+                                    toast.hide();
+                                }, 10000);
+                            </script>
+                        </div>
+                        @foreach ($errors->all() as $error)
+                            <div class="toast-body" style="color: black !important;">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             @endif
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
-                    @endforeach
+            @if (session('status'))
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success bg-gradient">
+                            <strong class="me-auto text-dark">Notification</strong>
+                            <small>{{ now()->diffForHumans() }}</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <script>
+                                setTimeout(function() {
+                                    var toastElement = document.getElementById('liveToast');
+                                    var toast = new bootstrap.Toast(toastElement);
+                                    toast.hide();
+                                }, 10000);
+                            </script>
+                        </div>
+                        <div class="toast-body" style="color: black !important;">
+                            {{ session('status') }}
+                        </div>
+                    </div>
                 </div>
             @endif
 
@@ -93,11 +127,13 @@
                                         <input id="editMetaTitle" type="text" name="meta_title"
                                             class="form-control is-valid" value="{{ $post->meta_title }}"
                                             autocomplete="off">
-                                        <div id="editMetaTitleError" class="invalid-feedback">Meta title is required.</div>
+                                        <div id="editMetaTitleError" class="invalid-feedback">Meta title is required.
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="">* Meta Description</label>
-                                        <textarea id="editMetaDescription" type="text" name="meta_description" class="form-control is-valid" rows="5">{!! $post->meta_description !!}</textarea>
+                                        <textarea id="editMetaDescription" type="text" name="meta_description" class="form-control is-valid"
+                                            rows="5">{!! $post->meta_description !!}</textarea>
                                         <div id="editMetaDescriptionError" class="invalid-feedback">Meta description is
                                             required.
                                         </div>
@@ -105,7 +141,8 @@
                                     <div class="mb-3">
                                         <label for="">* Meta keyword</label>
                                         <textarea id="editMetaKeywords" type="text" name="meta_keyword" class="form-control is-valid" rows="5">{!! $post->meta_keyword !!}</textarea>
-                                        <div id="editMetaKeywordsError" class="invalid-feedback">Meta keywords are required.
+                                        <div id="editMetaKeywordsError" class="invalid-feedback">Meta keywords are
+                                            required.
                                         </div>
                                     </div>
                                 </div>

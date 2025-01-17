@@ -5,16 +5,52 @@
 @section('content')
     <div class="container-fluid px-4">
         <div class="card mt-4 mb-4" style="border: 1px solid #80a8b0">
-            @if (session('status'))
-                <h5 class="alert alert-success mt-3">{{ session('status') }}</h5>
-            @endif
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
-                    @endforeach
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-danger bg-gradient">
+                            <strong class="me-auto text-dark">Notification</strong>
+                            <small>{{ now()->diffForHumans() }}</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <script>
+                                setTimeout(function() {
+                                    var toastElement = document.getElementById('liveToast');
+                                    var toast = new bootstrap.Toast(toastElement);
+                                    toast.hide();
+                                }, 10000);
+                            </script>
+                        </div>
+                        @foreach ($errors->all() as $error)
+                            <div class="toast-body" style="color: black !important;">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             @endif
+
+            @if (session('status'))
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success bg-gradient">
+                            <strong class="me-auto text-dark">Notification</strong>
+                            <small>{{ now()->diffForHumans() }}</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <script>
+                                setTimeout(function() {
+                                    var toastElement = document.getElementById('liveToast');
+                                    var toast = new bootstrap.Toast(toastElement);
+                                    toast.hide();
+                                }, 10000);
+                            </script>
+                        </div>
+                        <div class="toast-body" style="color: black !important;">
+                            {{ session('status') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="card-header" style="background-color: #80a8b0">
                 <h4 class="">Edit category: {{ $category->name }}
                     <a href="{{ url('admin/category') }}" class="btn btn-primary float-end">View all</a>
@@ -145,8 +181,8 @@
                                 </div>
                                 <div class="card-footer">
                                     @if (!empty($category->image))
-                                        <img src="{{ asset('uploads/category/' . $category->image) }}" alt="Category Image"
-                                            class="img-thumbnail mt-2" style="width: 100%;">
+                                        <img src="{{ asset('uploads/category/' . $category->image) }}"
+                                            alt="Category Image" class="img-thumbnail mt-2" style="width: 100%;">
                                     @else
                                         <p>No image on this category</p>
                                     @endif

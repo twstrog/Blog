@@ -6,13 +6,58 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if ($errors->any())
+                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-danger bg-gradient">
+                                <strong class="me-auto text-dark">Notification</strong>
+                                <small>{{ now()->diffForHumans() }}</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                    aria-label="Close"></button>
+                                <script>
+                                    setTimeout(function() {
+                                        var toastElement = document.getElementById('liveToast');
+                                        var toast = new bootstrap.Toast(toastElement);
+                                        toast.hide();
+                                    }, 10000);
+                                </script>
+                            </div>
+                            @foreach ($errors->all() as $error)
+                                <div class="toast-body" style="color: black !important;">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
                 @if (session('status'))
-                    <h5 class="alert alert-success mt-3">{{ session('status') }}</h5>
+                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-success bg-gradient">
+                                <strong class="me-auto text-dark">Notification</strong>
+                                <small>{{ now()->diffForHumans() }}</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                    aria-label="Close"></button>
+                                <script>
+                                    setTimeout(function() {
+                                        var toastElement = document.getElementById('liveToast');
+                                        var toast = new bootstrap.Toast(toastElement);
+                                        toast.hide();
+                                    }, 10000);
+                                </script>
+                            </div>
+                            <div class="toast-body" style="color: black !important;">
+                                {{ session('status') }}
+                            </div>
+                        </div>
+                    </div>
                 @endif
 
                 <div class="card mt-5">
                     <div class="card-header">
-                        <h3>My Information<a href="{{ route('admin.dashboard') }}" class="btn btn-primary float-end">Back</a>
+                        <h3>My Information<a href="{{ route('admin.dashboard') }}"
+                                class="btn btn-primary float-end">Back</a>
                         </h3>
                     </div>
                     <div class="card-body">

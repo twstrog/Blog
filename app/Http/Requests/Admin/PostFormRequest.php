@@ -16,15 +16,15 @@ class PostFormRequest extends FormRequest
         return [
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'required|string|max:20000',
             'yt_iframe' => [
                 'nullable',
                 'string',
                 'regex:/^https:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})$/',
             ],
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:500',
-            'meta_keyword' => 'nullable|string|max:255',
+            'meta_title' => 'required|string|max:60',
+            'meta_description' => 'required|string|max:160',
+            'meta_keyword' => 'required|string|max:100',
             'status' => 'nullable',
         ];
     }
@@ -37,11 +37,16 @@ class PostFormRequest extends FormRequest
             'name.required' => 'Post name is required.',
             'name.string' => 'Post name must be a valid string.',
             'name.max' => 'Post name may not exceed 255 characters.',
-            // 'name.unique' => 'A post with this name already exists.',
+            'description.required' => 'Description is required.',
+            'description.string' => 'Description must be a valid string.',
+            'description.max' => 'Description may not exceed 20000 characters.',
             'yt_iframe.regex' => 'The YouTube link must be a valid URL.',
-            'meta_title.max' => 'Meta title may not exceed 255 characters.',
-            'meta_description.max' => 'Meta description may not exceed 500 characters.',
-            'meta_keyword.max' => 'Meta keyword may not exceed 255 characters.',
+            'meta_title.required' => 'Meta title is required.',
+            'meta_title.max' => 'Meta title may not exceed 60 characters.',
+            'meta_description.required' => 'Meta description is required.',
+            'meta_description.max' => 'Meta description may not exceed 160 characters.',
+            'meta_keyword.required' => 'Meta keyword is required.',
+            'meta_keyword.max' => 'Meta keyword may not exceed 100 characters.',
         ];
     }
 

@@ -13220,8 +13220,13 @@ body.dark-mode .dropdown-item:hover {
 
 #theme-toggle {
     font-size: 19px;
+    min-width: 50px;
 }
 
 .note-toolbar {
     background-color: #3b4a51 !important;
 }
+
+/* pre {
+    white-space: pre-wrap !important;
+} */

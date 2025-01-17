@@ -7,9 +7,6 @@
 
     <div class="container-fluid px-4">
         <div class="card mt-4">
-            @if (session('status'))
-                <h5 class="alert alert-success mt-3">{{ session('status') }}</h5>
-            @endif
             @if ($errors->any())
                 <div class="alert alert-danger">
                     @foreach ($errors->all() as $error)
@@ -17,6 +14,30 @@
                     @endforeach
                 </div>
             @endif
+
+            @if (session('status'))
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success bg-gradient">
+                            {{-- <img src="{{ asset('path-to-your-image.png') }}" class="rounded me-2" alt="Icon"> --}}
+                            <strong class="me-auto text-dark">Notification</strong>
+                            <small>{{ now()->diffForHumans() }}</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <script>
+                                setTimeout(function() {
+                                    var toastElement = document.getElementById('liveToast');
+                                    var toast = new bootstrap.Toast(toastElement);
+                                    toast.hide();
+                                }, 3000);
+                            </script>
+                        </div>
+                        <div class="toast-body" style="color: black !important;">
+                            {{ session('status') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="card-header">
                 <h4 class="">View Category
                     <a href="{{ url('admin/add-category') }}" class="btn border rounded-3 float-end">
