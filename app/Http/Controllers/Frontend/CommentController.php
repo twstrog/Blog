@@ -16,7 +16,7 @@ class CommentController extends Controller
         if (Auth::check()) {
 
             $validator = Validator::make($request->all(), [
-                'comment_body' => 'required|string'
+                'comment_body' => 'required|string|max:5000'
             ]);
 
             if ($validator->fails()) {
@@ -28,7 +28,7 @@ class CommentController extends Controller
                 Comment::create([
                     'post_id' => $post->id,
                     'user_id' => Auth::user()->id,
-                    'comment_body' => $request->comment_body
+                    'comment_body' => htmlspecialchars($request->comment_body, ENT_QUOTES, 'UTF-8')
                 ]);
                 return redirect()->back()->with('message', 'Comment added successfully.');
             } else {

@@ -9,7 +9,7 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
                     <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-header bg-danger bg-gradient">
-                            <strong class="me-auto text-dark">Notification</strong>
+                            <strong class="me-auto text-dark">{{ __('Notification') }}</strong>
                             <small>{{ now()->diffForHumans() }}</small>
                             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                             <script>
@@ -33,7 +33,7 @@
                 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
                     <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-header bg-success bg-gradient">
-                            <strong class="me-auto text-dark">Notification</strong>
+                            <strong class="me-auto text-dark">{{ __('Notification') }}</strong>
                             <small>{{ now()->diffForHumans() }}</small>
                             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                             <script>
@@ -52,9 +52,7 @@
             @endif
 
             <div class="card-header" style="background-color: #80a8b0">
-                <h4>Add a new post
-                    {{-- <a href="{{ route('admin.post') }}" class="btn btn-sm btn-primary float-end">View Post</a> --}}
-                </h4>
+                <h4>{{ __('Add A New Post') }}</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.add-post') }}" method="POST" id="postForm">
@@ -64,11 +62,11 @@
                         <div class="col-md-8">
                             <div class="card mb-3" style="border: 1px solid #007fab">
                                 <div class="card-header" style="background-color: #d3e0e4">
-                                    <h4>Content</h4>
+                                    <h4>{{ __('Content') }}</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="category">* Category</label>
+                                        <label for="category">{{ __('* Category') }}</label>
                                         <select id="category" name="category_id" class="form-control is-invalid">
                                             <option value="">-- Select Category --</option>
                                             @foreach ($category as $cateitem)
@@ -79,25 +77,23 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="postName">* Post Name</label>
+                                        <label for="postName">{{ __('* Post Name (Max 255 characters)') }}</label>
                                         <input type="text" id="postName" name="name" class="form-control"
                                             autocomplete="off">
                                         <div id="postNameError" class="invalid-feedback">Post name is required.</div>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="description">* Description</label>
+                                        <label for="description">{{ __('* Description (Max 20000 characters)') }}</label>
                                         <textarea id="summernote" name="description" class="form-control"></textarea>
                                         <div id="descriptionError" class="invalid-feedback">Description is required.</div>
                                     </div>
 
                                     <div class="mb-2">
-                                        <label for="ytIframe">Youtube Link</label>
+                                        <label for="ytIframe">{{ __('Link Youtube') }}</label>
                                         <input type="text" id="ytIframe" name="yt_iframe" class="form-control is-valid"
                                             autocomplete="off" placeholder="https://www.youtube.com/watch?v=example">
-                                        <div id="ytIframeError" class="invalid-feedback">
-                                            Enter a valid YouTube link (e.g., https://www.youtube.com/watch?v=example).
-                                        </div>
+                                        <div id="ytIframeError" class="invalid-feedback"></div>
                                     </div>
                                 </div>
                             </div>
@@ -106,18 +102,19 @@
                         <div class="col-md-4">
                             <div class="card mb-3" style="border: 1px solid #007fab">
                                 <div class="card-header" style="background-color: #d3e0e4">
-                                    <h4>SEO tags</h4>
+                                    <h4>{{ __('SEO Tags') }}</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="metaTitle">* Meta Title</label>
+                                        <label for="metaTitle">{{ __('* Meta Title (Max 60 characters)') }}</label>
                                         <input type="text" id="metaTitle" name="meta_title" class="form-control"
                                             autocomplete="off">
                                         <div id="metaTitleError" class="invalid-feedback">Meta title is required.</div>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="metaDescription">* Meta Description</label>
+                                        <label
+                                            for="metaDescription">{{ __('* Meta Description (Max 160 characters)') }}</label>
                                         <textarea id="metaDescription" name="meta_description" class="form-control" rows="5"></textarea>
                                         <div id="metaDescriptionError" class="invalid-feedback">Meta description is
                                             required.
@@ -125,7 +122,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="metaKeywords">* Meta Keywords</label>
+                                        <label for="metaKeywords">{{ __('* Meta Keywords (Max 100 characters)') }}</label>
                                         <textarea id="metaKeywords" name="meta_keyword" class="form-control" rows="5"></textarea>
                                         <div id="metaKeywordsError" class="invalid-feedback">Meta keywords are required.
                                         </div>
@@ -135,7 +132,7 @@
 
                             <div class="card mb-3" style="border: 1px solid #007fab">
                                 <div class="card-header" style="background-color: #d3e0e4">
-                                    <h4>Status</h4>
+                                    <h4>{{ __('Status') }}</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -167,7 +164,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    <script type="text/javascript">
         // Hàm thêm hoặc loại bỏ class cho trường nhập liệu
         function validateField(input, errorElement, isValid) {
             if (isValid) {
@@ -181,9 +178,30 @@
             }
         }
 
-        // Validate trường văn bản
-        function validateTextField(input, errorElement) {
-            const isValid = input.value.trim() !== '';
+        // Validate trường văn bản với giới hạn ký tự và ký tự đặc biệt
+        function validateTextField(input, errorElement, maxLength = null, allowSpecialChars = true) {
+            const value = input.value.trim();
+            let isValid = value !== '';
+
+            if (isValid && maxLength !== null) {
+                isValid = value.length <= maxLength;
+                if (!isValid) {
+                    errorElement.textContent = `The field must not exceed ${maxLength} characters.`;
+                }
+            }
+
+            if (isValid && !allowSpecialChars) {
+                const specialCharRegex = /[^a-zA-Z0-9\s]/;
+                isValid = !specialCharRegex.test(value);
+                if (!isValid) {
+                    errorElement.textContent = 'The field must not contain special characters.';
+                }
+            }
+
+            if (isValid) {
+                errorElement.textContent = 'This field is required.';
+            }
+
             validateField(input, errorElement, isValid);
             return isValid;
         }
@@ -196,29 +214,28 @@
         }
 
         // Validate YouTube Iframe link
-        // Validate YouTube Iframe link
         function validateYoutubeField(input, errorElement) {
-            // Chấp nhận trường hợp trống hoặc URL YouTube hợp lệ
-            if (input.value.trim() === '') {
+            const value = input.value.trim();
+
+            if (value === '') {
                 // Nếu trống, không cần hiển thị lỗi
                 input.classList.remove('is-invalid');
                 input.classList.add('is-valid');
                 errorElement.style.display = 'none';
                 return true;
             }
-
             const ytRegex = /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]{11})$/;
-            const isValid = ytRegex.test(input.value.trim());
-            validateField(input, errorElement, isValid);
-
-            // Nếu hợp lệ, trích xuất video ID
-            if (isValid) {
-                const videoId = input.value.match(ytRegex)[1];
-                console.log("Extracted Video ID:", videoId); // Lưu video ID nếu cần
+            const isValid = ytRegex.test(value);
+            if (!isValid) {
+                errorElement.textContent = 'Enter a valid YouTube link (e.g., https://www.youtube.com/watch?v=example)';
+            } else {
+                errorElement.textContent = '';
+                const videoId = value.match(ytRegex)[1];
+                // console.log("Extracted Video ID:", videoId); // Lưu video ID nếu cần
             }
+            validateField(input, errorElement, isValid);
             return isValid;
         }
-
 
         // Áp dụng sự kiện validate trực tiếp
         document.getElementById('category').addEventListener('change', function() {
@@ -226,11 +243,11 @@
         });
 
         document.getElementById('postName').addEventListener('input', function() {
-            validateTextField(this, document.getElementById('postNameError'));
+            validateTextField(this, document.getElementById('postNameError'), 255);
         });
 
         document.getElementById('summernote').addEventListener('input', function() {
-            validateTextField(this, document.getElementById('descriptionError'));
+            validateTextField(this, document.getElementById('descriptionError'), 20000);
         });
 
         document.getElementById('ytIframe').addEventListener('input', function() {
@@ -238,15 +255,15 @@
         });
 
         document.getElementById('metaTitle').addEventListener('input', function() {
-            validateTextField(this, document.getElementById('metaTitleError'));
+            validateTextField(this, document.getElementById('metaTitleError'), 60, false);
         });
 
         document.getElementById('metaDescription').addEventListener('input', function() {
-            validateTextField(this, document.getElementById('metaDescriptionError'));
+            validateTextField(this, document.getElementById('metaDescriptionError'), 160, false);
         });
 
         document.getElementById('metaKeywords').addEventListener('input', function() {
-            validateTextField(this, document.getElementById('metaKeywordsError'));
+            validateTextField(this, document.getElementById('metaKeywordsError'), 100, false);
         });
 
         // Xử lý form submit
@@ -259,11 +276,13 @@
             );
             const isPostNameValid = validateTextField(
                 document.getElementById('postName'),
-                document.getElementById('postNameError')
+                document.getElementById('postNameError'),
+                255
             );
             const isDescriptionValid = validateTextField(
                 document.getElementById('summernote'),
-                document.getElementById('descriptionError')
+                document.getElementById('descriptionError'),
+                20000
             );
             const isYoutubeValid = validateYoutubeField(
                 document.getElementById('ytIframe'),
@@ -271,15 +290,21 @@
             );
             const isMetaTitleValid = validateTextField(
                 document.getElementById('metaTitle'),
-                document.getElementById('metaTitleError')
+                document.getElementById('metaTitleError'),
+                60,
+                false
             );
             const isMetaDescriptionValid = validateTextField(
                 document.getElementById('metaDescription'),
-                document.getElementById('metaDescriptionError')
+                document.getElementById('metaDescriptionError'),
+                160,
+                false
             );
             const isMetaKeywordsValid = validateTextField(
                 document.getElementById('metaKeywords'),
-                document.getElementById('metaKeywordsError')
+                document.getElementById('metaKeywordsError'),
+                100,
+                false
             );
 
             if (
@@ -292,8 +317,6 @@
                 isMetaKeywordsValid
             ) {
                 this.submit(); // Gửi form nếu tất cả hợp lệ
-            } else {
-                // alert('Please fix the errors before submitting.');
             }
         });
     </script>
