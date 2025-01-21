@@ -1,12 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to Blog IT')
-
-@section('meta_description',
-    'Blog IT là nguồn tài nguyên tuyệt vời với các bài viết sâu sắc về công nghệ, phát triển
-    phần mềm, hướng dẫn lập trình và phát triển web. Cập nhật những xu hướng và mẹo mới nhất trong thế giới công nghệ.')
-
-@section('meta_keyword', 'blog it, blog it manager, blog it nmc, blog it nmc id, blog it nmc id vn')
+@section('title', $setting->meta_title)
+@section('meta_description', $setting->meta_description)
+@section('meta_keyword', $setting->meta_keyword)
 
 @section('content')
     <div class="bg-category py-3">
@@ -37,15 +33,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Blog IT</h4>
+                    <h4>{{ $setting->website_name }}</h4>
                     <div class="underline"></div>
-                    <p>
-                        Blog IT là một không gian chia sẻ kiến thức về công nghệ, phát triển phần mềm, lập trình, thiết kế
-                        web, và các xu hướng mới nhất trong ngành công nghệ thông tin. Tại đây, bạn sẽ tìm thấy các bài viết
-                        chuyên sâu, hướng dẫn chi tiết và các mẹo vặt hữu ích giúp bạn nâng cao kỹ năng lập trình, tối ưu
-                        hóa dự án và cập nhật những công nghệ tiên tiến. Hãy ghé thăm blog IT để khám phá những bài viết bổ
-                        ích và kết nối với cộng đồng công nghệ.
-                    </p>
+                    <p>{{ $setting->description }}</p>
                 </div>
             </div>
         </div>

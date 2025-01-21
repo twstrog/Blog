@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- Favicon --}}
-    <link rel="icon" href="https://nmc.id.vn/assets/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="https://nmc.id.vn/assets/images/apple-touch-icon.png" />
+    @php
+        $setting = App\Models\Setting::find(1);
+    @endphp
+    <link rel="icon" href="{{ asset('uploads/settings/' . $setting->favicon) }}" />
 
     <title>@yield('title')</title>
 
@@ -37,12 +39,28 @@
     <div id="layoutSidenav">
         @include('layouts.inc.admin-sidebar')
         <div id="layoutSidenav_content">
-            <main>
+            <div id="loading-screen">
+                <div class="spinner">
+                    <img src="https://nmc.id.vn/assets/images/apple-touch-icon.png" alt="Logo">
+                </div>
+            </div>
+
+            <main style="display: none;" id="main-content">
                 @yield('content')
             </main>
             @include('layouts.inc.admin-footer')
         </div>
     </div>
+
+    <script>
+        window.addEventListener("load", function() {
+            const loadingScreen = document.getElementById("loading-screen");
+            loadingScreen.style.display = "none";
+
+            const mainContent = document.getElementById("main-content");
+            mainContent.style.display = "block";
+        });
+    </script>
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>

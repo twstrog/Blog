@@ -48,9 +48,10 @@
             <div class="card-body">
                 <form action="">
                     @csrf
-                    <table id="myDataTable" class="table table-striped table-hover">
+                    <table id="myDataTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <td>#</td>
                                 <th>ID</th>
                                 <th>Category Name</th>
                                 <th>Image</th>
@@ -62,6 +63,7 @@
                         <tbody>
                             @foreach ($category as $item)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>

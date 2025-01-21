@@ -22,7 +22,10 @@
         <div class="container">
 
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="https://nmc.id.vn/assets/images/logo-blogit.png" class="nav-logo" alt="Blog IT"
+                @php
+                    $setting = App\Models\Setting::find(1);
+                @endphp
+                <img src="{{ asset('uploads/settings/' . $setting->logo) }}" class="nav-logo" alt="Blog IT"
                     style="pointer-events: none !important;" />
             </a>
 
@@ -104,11 +107,13 @@
 
                             @if (auth()->check() && auth()->user()->isSuperAdmin())
                                 <li>
-                                    <a class="dropdown-item" href="#!">{{ __('Settings') }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ url('admin/settings') }}">{{ __('Settings') }}</a>
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item" href="#!">{{ __('Activity log') }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ url('admin/activity-logs') }}">{{ __('Activity log') }}</a>
                                 </li>
 
                                 <li>

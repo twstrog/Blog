@@ -65,6 +65,7 @@
                     <table id="myDataTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>ID</th>
                                 <th>Category</th>
                                 <th>Post Name</th>
@@ -76,6 +77,7 @@
                         <tbody>
                             @foreach ($posts as $item)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->category->name }}</td>
                                     <td>{{ $item->name }}</td>

@@ -2,7 +2,13 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div class="sb-sidenav-menu-heading">Core</div>
+                <div class="sb-sidenav-menu-heading">
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                    {{ __('Core') }}
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                </div>
                 <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}"
                     href="{{ route('admin.dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -10,7 +16,13 @@
                 </a>
 
                 @if (auth()->check() && auth()->user()->isSuperAdmin())
-                    <div class="sb-sidenav-menu-heading">Interface Super Admin</div>
+                    <div class="sb-sidenav-menu-heading">
+                        <i class="fa-solid fa-grip-lines"></i>
+                        {{-- <i class="fa-solid fa-grip-lines"></i> --}}
+                        {{ __('Interface Super Admin') }}
+                        {{-- <i class="fa-solid fa-grip-lines"></i> --}}
+                        <i class="fa-solid fa-grip-lines"></i>
+                    </div>
                     <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}"
                         href="{{ route('admin.users') }}">
                         <div class="sb-nav-link-icon">
@@ -27,11 +39,19 @@
                     </a>
                 @endif
 
-                <div class="sb-sidenav-menu-heading">Interfaces</div>
+                <div class="sb-sidenav-menu-heading">
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                    {{ __('Interfaces') }}
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                </div>
                 <a class="nav-link {{ Request::is('admin/category') || Request::is('admin/add-category') || Request::is('admin/edit-category/*') ? 'collapse active' : 'collapsed' }}"
                     href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false"
                     aria-controls="collapseCategory">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    <div class="sb-nav-link-icon">
+                        <i class="fa-solid fa-table-list"></i>
+                    </div>
                     Category
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
@@ -47,7 +67,9 @@
                 <a class="nav-link {{ Request::is('admin/posts') || Request::is('admin/add-post') || Request::is('admin/post/*') ? 'collapse active' : 'collapsed' }}"
                     href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false"
                     aria-controls="collapsePosts">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    <div class="sb-nav-link-icon">
+                        <i class="fa-regular fa-newspaper"></i>
+                    </div>
                     Post
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
@@ -61,7 +83,13 @@
                     </nav>
                 </div>
 
-                <div class="sb-sidenav-menu-heading">Tools</div>
+                <div class="sb-sidenav-menu-heading">
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                    {{ __('Tools') }}
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                </div>
                 {{-- <a class="nav-link {{ Request::is('admin/tools') ? 'active' : '' }}" href="{{ url('admin/tools') }}"> --}}
                 <a class="nav-link {{ Request::is('admin/tools') ? 'active' : '' }}"
                     href="{{ route('admin.tools') }}">
@@ -71,7 +99,30 @@
                     Characters Count
                 </a>
 
-                <div class="sb-sidenav-menu-heading">Contact</div>
+                @if (auth()->check() && auth()->user()->isSuperAdmin())
+                    <div class="sb-sidenav-menu-heading">
+                        <i class="fa-solid fa-grip-lines"></i>
+                        <i class="fa-solid fa-grip-lines"></i>
+                        {{ __('Config') }}
+                        <i class="fa-solid fa-grip-lines"></i>
+                        <i class="fa-solid fa-grip-lines"></i>
+                    </div>
+                    <a class="nav-link {{ Request::is('admin/settings') ? 'active' : '' }}"
+                        href="{{ route('admin.settings') }}">
+                        <div class="sb-nav-link-icon">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        Settings
+                    </a>
+                @endif
+
+                <div class="sb-sidenav-menu-heading">
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                    {{ __('Contact') }}
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <i class="fa-solid fa-grip-lines"></i>
+                </div>
                 <a class="nav-link" href="https://nmc.id.vn/portfolio" target="_blank">
                     <div class="sb-nav-link-icon">
                         <i class="fa-regular fa-address-book"></i>

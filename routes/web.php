@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Frontend\FrontendController;
 
 Route::get('/', function () {
@@ -31,8 +32,9 @@ Route::middleware(['auth', 'isSuperAdmin'])->group(function () {
     Route::get('admin/users/{user_id}', [UserController::class, 'edit'])->name('admin.edit-user');
     Route::put('admin/update-role/{user_id}', [UserController::class, 'update']);
     Route::get('/delete-user/{user_id}', [UserController::class, 'destroy']);
-
     Route::get('admin/activity-logs', [ActivityLogController::class, 'index'])->name('activity-logs.index');
+    Route::get('admin/settings', [SettingController::class, 'index'])->name('admin.settings');
+    Route::post('admin/settings', [SettingController::class, 'savedata']);
 });
 
 // Route Admin Manage

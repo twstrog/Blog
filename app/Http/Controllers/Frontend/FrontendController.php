@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Post;
 use App\Models\User;
 // use Illuminate\Http\Request;
+use App\Models\Setting;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,10 @@ class FrontendController extends Controller
 {
     public function index()
     {
+        $setting = Setting::find(1);
         $all_category = Category::where('status', '0')->get()->take(8);
         $latest_posts = Post::where('status', '0')->orderBy('created_at', 'DESC')->get()->take(8);
-        return view('frontend.index', compact('all_category', 'latest_posts'));
+        return view('frontend.index', compact('all_category', 'latest_posts', 'setting'));
     }
 
     public function viewCategoryPost($category_slug)

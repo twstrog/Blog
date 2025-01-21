@@ -11,7 +11,6 @@ class ActivityLogController extends Controller
 {
     public function index()
     {
-
         $logs = Audit::orderBy('created_at', 'desc')->get();
         return view('admin.activity_logs.index', compact('logs'));
     }

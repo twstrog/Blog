@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Activity Logs')
+@section('title', 'Blog IT - Activity Logs')
 
 @section('content')
     {{-- <div class="container"> --}}
@@ -28,16 +28,26 @@
                                 <td>{{ $log->user->name ?? 'System' }}</td>
                                 <td>{{ $log->event }}</td>
                                 <td>{{ class_basename($log->auditable_type) }} (ID: {{ $log->auditable_id }})</td>
+
                                 <td>
                                     @if ($log->event === 'updated')
-                                        <pre>{{ json_encode(['before_change' => $log->old_values], JSON_PRETTY_PRINT) }}</pre>
-                                        <pre>{{ json_encode(['after_change' => $log->new_values], JSON_PRETTY_PRINT) }}</pre>
+                                        <pre style="white-space: pre-wrap">
+                                            {{ json_encode(['before_change' => $log->old_values], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}
+                                        </pre>
+                                        <pre style="white-space: pre-wrap">
+                                            {{ json_encode(['after_change' => $log->new_values], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}
+                                        </pre>
                                     @elseif ($log->event === 'created')
-                                        <pre>{{ json_encode($log->new_values, JSON_PRETTY_PRINT) }}</pre>
+                                        <pre style="white-space: pre-wrap">
+                                            {{ json_encode($log->new_values, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}
+                                        </pre>
                                     @elseif ($log->event === 'deleted')
-                                        <pre>{{ json_encode($log->old_values, JSON_PRETTY_PRINT) }}</pre>
+                                        <pre style="white-space: pre-wrap">
+                                            {{ json_encode($log->old_values, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}
+                                        </pre>
                                     @endif
                                 </td>
+
                                 <td>
                                     {{ $log->created_at->timezone('UTC')->setTimezone('Asia/Bangkok')->format('H:i:s - d/m/Y') }}
                                 </td>

@@ -28,11 +28,6 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#!">{{ __('Settings') }}</a></li>
-                <li><a class="dropdown-item" href="#!">{{ __('Activity log') }}</a></li>
-                <li>
-                    <hr class="dropdown-divider" />
-                </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

@@ -24,9 +24,9 @@ class CategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required|string|max:255'],
-            'slug' => ['nullable|string|max:255'],
-            'description' => ['required|string|max:255'],
+            'name' => 'required|string|max:255',
+            'slug' => 'nullable|string|max:255',
+            'description' => 'required|string|max:255',
             'image' => 'nullable|mimes:jpeg,jpg,png, gif',
             'meta_title' => 'required|string|max:60',
             'meta_description' => 'required|string|max:160',

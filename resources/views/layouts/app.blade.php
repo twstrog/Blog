@@ -11,8 +11,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Favicon --}}
-    <link rel="icon" href="https://nmc.id.vn/assets/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="https://nmc.id.vn/assets/images/apple-touch-icon.png" />
+    @php
+        $setting = App\Models\Setting::find(1);
+    @endphp
+    <link rel="icon" href="{{ asset('uploads/settings/' . $setting->favicon) }}" type="image/x-icon" />
+    {{-- <link rel="apple-touch-icon" href="https://nmc.id.vn/assets/images/apple-touch-icon.png" /> --}}
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <!-- Fonts -->
